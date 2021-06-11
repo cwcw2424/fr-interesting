@@ -1,12 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
     <title>博饼</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bobing.css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 </head>
+
 <body>
-    
+    <div class="main">
+        <div class="bowl" id="dicebox">
+            <img class="bg_img" src="img/port.jpg" />
+        </div>
+    </div>
+
+    <div class="btn-box">
+        <input class="btn" type="button" value="开始" onclick="begin()" />
+    </div>
+
+    <script type="text/javascript" src="js/dice.js"></script>
+    <script>
+        var dicefun = {
+            init: function () {
+                var container = document.getElementById('dicebox');
+                $('.redpacket').remove();
+                var arr = this.randomFun();
+                for (var i = 0; i < 6; i++) {
+                    container.appendChild(this.createDice(arr[i] + 1, i));
+                }
+            },
+            randomFun: function () {
+                var arr = [];
+                for (var i = 0; i < 6; i++) {
+                    arr.push(Math.floor(Math.random() * 6));
+                }
+                return arr;
+            },
+            createDice: function (num, i) {
+                var image = document.createElement('img');
+                image.setAttribute("class", "redpacket");
+                image.id = "redpacket" + i;
+                image.src = 'img/' + num + '.jpg';
+                return image;
+            },
+        }
+
+        function begin() {
+            dicefun.init();
+        }
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,2 @@
+# fr-interesting
+interesting pages
